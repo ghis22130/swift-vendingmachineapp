@@ -90,7 +90,7 @@
 		FFCB24A525E643900028AD95 /* Sprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprite.swift; sourceTree = "<group>"; };
 		FFCB24AA25E643A80028AD95 /* Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top.swift; sourceTree = "<group>"; };
 		FFCB24AD25E643AE0028AD95 /* Cantata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cantata.swift; sourceTree = "<group>"; };
-		FFCB24C025E88D160028AD95 /* BeverageInventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeverageInventory.swift; sourceTree = "<group>"; };
+		FFCB24C025E88D160028AD95 /* BeverageInventory.swift */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = BeverageInventory.swift; sourceTree = "<group>"; };
 		FFCB24C425E8AC870028AD95 /* SalesLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesLog.swift; sourceTree = "<group>"; };
 		FFCB24DC25EE18FA0028AD95 /* VendingMachineAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VendingMachineAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFCB24DE25EE18FA0028AD95 /* VendingMachineAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendingMachineAppTests.swift; sourceTree = "<group>"; };

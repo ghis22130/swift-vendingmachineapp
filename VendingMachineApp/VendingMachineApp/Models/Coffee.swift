@@ -11,9 +11,9 @@ class Coffee: Beverage {
     
     private var caffein:  Int
     
-    init(brand: String, capacity: Int, price: Money, name: String, manufacturedDate: Date, caffein: Int, expiration: Date, hot: Bool, calorie: Int) {
+    init(brand: String, capacity: Int, price: Money, name: String, manufacturedDate: Date, caffein: Int, expiration: Date, temperatue: Double, calorie: Int) {
         self.caffein = caffein
-        super.init(brand: brand, capacity: capacity, price: price, name: name, manufacturedDate: manufacturedDate, expiration: expiration, hot: hot, calorie: calorie )
+        super.init(brand: brand, capacity: capacity, price: price, name: name, manufacturedDate: manufacturedDate, expiration: expiration, temperature: temperatue, calorie: calorie )
     }
     
     required init() {

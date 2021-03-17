@@ -16,15 +16,15 @@ class Cantata: Coffee {
     
     private var flavor: Flavor
     
-    init(manufacturedDate: Date, caffein: Int, flavor: Flavor, hot: Bool, calorie: Int) {
+    init(manufacturedDate: Date, caffein: Int, flavor: Flavor, temperature: Double, calorie: Int) {
         self.flavor = flavor
-        super.init(brand: "Cantata", capacity: 275, price: Money(how: 1800), name: flavor.rawValue, manufacturedDate: manufacturedDate, caffein: caffein, expiration: Calendar.current.date(byAdding: .day, value: 60, to: manufacturedDate)!, hot: hot, calorie: calorie)
+        super.init(brand: "Cantata", capacity: 275, price: Money(how: 1800), name: flavor.rawValue, manufacturedDate: manufacturedDate, caffein: caffein, expiration: Calendar.current.date(byAdding: .day, value: 60, to: manufacturedDate)!, temperatue: temperature, calorie: calorie)
     }
     
     required init() {
         self.flavor = .Americano
         let manufacturedDate = Date()
-        super.init(brand: "Cantata", capacity: 275, price: Money(how: 1800), name: flavor.rawValue, manufacturedDate: manufacturedDate, caffein: 5, expiration: Calendar.current.date(byAdding: .day, value: 60, to: manufacturedDate)!, hot: true, calorie: 25)    }
+        super.init(brand: "Cantata", capacity: 275, price: Money(how: 1800), name: flavor.rawValue, manufacturedDate: manufacturedDate, caffein: 5, expiration: Calendar.current.date(byAdding: .day, value: 60, to: manufacturedDate)!, temperatue: 40, calorie: 25)    }
     
     required init?(coder: NSCoder) {
         self.flavor = Flavor(rawValue: coder.decodeObject(forKey: "cantataFlavor") as! String)!

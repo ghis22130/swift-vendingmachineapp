@@ -11,9 +11,9 @@ class Soda: Beverage{
     
     private var zeroCalorie: Bool
     
-    override init(brand: String, capacity: Int, price: Money, name: String, manufacturedDate: Date, expiration: Date, hot: Bool, calorie: Int) {
+    override init(brand: String, capacity: Int, price: Money, name: String, manufacturedDate: Date, expiration: Date, temperature: Double, calorie: Int) {
         self.zeroCalorie = false
-        super.init(brand: brand, capacity: capacity, price: price, name: name, manufacturedDate: manufacturedDate, expiration: expiration, hot: hot, calorie: calorie )
+        super.init(brand: brand, capacity: capacity, price: price, name: name, manufacturedDate: manufacturedDate, expiration: expiration, temperature: temperature, calorie: calorie )
         self.zeroCalorie = self.isZeroCalorie(unit: calorie)
     }
     

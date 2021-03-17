@@ -26,7 +26,4 @@ class SalesLog: NSObject, NSCoding {
     required init?(coder: NSCoder) {
         self.log = coder.decodeObject(forKey: "log") as! BeverageInventory
     }
-//    func get() -> [String] {
-//        return log.getList()
-//    }
 }

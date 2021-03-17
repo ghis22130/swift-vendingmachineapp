@@ -66,33 +66,29 @@ class VendingMachine: NSObject, NSCoding {
         return credit
     }
     
-    func hotBeverages() -> [Beverage] {
-        return stock.hotBeverages()
+    func hotBeverages(unit: Double) -> [Beverage] {
+        return stock.hotBeverages(unit: unit)
     }
     
-    func lowCalorieBeverages() -> [Beverage] {
-        return stock.lowCalorieBeverages()
+    func lowCalorieBeverages(unit: Int) -> [Beverage] {
+        return stock.lowCalorieBeverages(unit: unit)
     }
     
     func validateBeverages(when date: Date) -> [Beverage] {
-        return stock.validateBeverages(when: date)
+        return stock.validateFromExpired(when: date)
     }
     
     private func canBuy(with beverage: Beverage) -> Bool {
         return credit > beverage.price
     }
     
-    private func hasBeverage(with beverage: Beverage) -> Bool {
-        return stock.hasBeverage(with: beverage)
-    }
-    
     func buy(with beverage: Beverage) -> Beverage? {
-        if !hasBeverage(with: beverage) || !canBuy(with: beverage){
-            return nil
+        if stock.canPop(beverage){
+            credit -= beverage.price
+            update(with: beverage)
+            return beverage
         }
-        credit -= beverage.price
-        update(with: beverage)
-        return beverage
+        return nil
     }
     
     private func update(with beverage: Beverage) {
@@ -102,10 +98,6 @@ class VendingMachine: NSObject, NSCoding {
     private func logUpdate(_ beverage: Beverage) {
         log.update(beverage)
     }
-    
-//    func showLog() -> [String] {
-//        return log.get()
-//    }
     
     func countType() -> Int {
         return stock.countType()

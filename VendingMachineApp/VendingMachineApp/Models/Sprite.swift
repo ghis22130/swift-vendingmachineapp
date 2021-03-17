@@ -16,15 +16,15 @@ class Sprite: Soda {
     
     private var flavor: Flavor
     
-    init(date: Date, isZero: Bool, flavor: Flavor, hot: Bool, calorie: Int) {
+    init(date: Date, isZero: Bool, flavor: Flavor, temperature: Double, calorie: Int) {
         self.flavor = flavor
-        super.init(brand: "스프라이트", capacity: 333, price: Money(how: 1800), name: flavor.rawValue, manufacturedDate: date,expiration: Calendar.current.date(byAdding: .day, value: 90, to: date)!, hot: hot, calorie: calorie)
+        super.init(brand: "스프라이트", capacity: 333, price: Money(how: 1800), name: flavor.rawValue, manufacturedDate: date,expiration: Calendar.current.date(byAdding: .day, value: 90, to: date)!, temperature: temperature, calorie: calorie)
     }
     
     required init() {
         self.flavor = .Original
         let manufacturedDate = Date()
-        super.init(brand: "스프라이트", capacity: 333, price: Money(how: 1800), name: flavor.rawValue, manufacturedDate: manufacturedDate,expiration: Calendar.current.date(byAdding: .day, value: 90, to: manufacturedDate)!, hot: false, calorie: 385)
+        super.init(brand: "스프라이트", capacity: 333, price: Money(how: 1800), name: flavor.rawValue, manufacturedDate: manufacturedDate,expiration: Calendar.current.date(byAdding: .day, value: 90, to: manufacturedDate)!, temperature: 0, calorie: 385)
     }
     
     required init?(coder: NSCoder) {

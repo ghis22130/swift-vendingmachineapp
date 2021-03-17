@@ -14,19 +14,19 @@ class Beverage: NSObject, NSCoding {
     private var name: String
     private var manufacturedDate: Date
     private var expiration: Date
-    private var hot: Bool
+    private var temperature: Double
     private var calorie: Int
     
 
     
-    init(brand: String, capacity: Int, price: Money, name: String, manufacturedDate: Date, expiration: Date, hot: Bool, calorie: Int){
+    init(brand: String, capacity: Int, price: Money, name: String, manufacturedDate: Date, expiration: Date, temperature: Double, calorie: Int){
         self.brand = brand
         self.capacity = capacity
         self.price = price
         self.name = name
         self.manufacturedDate = manufacturedDate
         self.expiration = expiration
-        self.hot = hot
+        self.temperature = temperature
         self.calorie = calorie
     }
     
@@ -37,7 +37,7 @@ class Beverage: NSObject, NSCoding {
         self.name = ""
         self.manufacturedDate = Date()
         self.expiration = Date()
-        self.hot = false
+        self.temperature = 0
         self.calorie = 0
     }
     
@@ -48,7 +48,7 @@ class Beverage: NSObject, NSCoding {
         coder.encode(name, forKey: "name")
         coder.encode(manufacturedDate, forKey: "manufacturedDate")
         coder.encode(expiration, forKey: "expiration")
-        coder.encode(hot, forKey: "hot")
+        coder.encode(temperature, forKey: "hot")
         coder.encode(calorie, forKey: "calorie")
     }
     
@@ -59,7 +59,7 @@ class Beverage: NSObject, NSCoding {
         self.name = coder.decodeObject(forKey: "name") as! String
         self.manufacturedDate = coder.decodeObject(forKey: "manufacturedDate") as! Date
         self.expiration = coder.decodeObject(forKey: "expiration") as! Date
-        self.hot = coder.decodeBool(forKey: "hot")
+        self.temperature = coder.decodeDouble(forKey: "temperature")
         self.calorie = coder.decodeInteger(forKey: "calorie")
     
     }
@@ -72,19 +72,19 @@ class Beverage: NSObject, NSCoding {
         return credit > price
     }
     
-    func isHot() -> Bool {
-        return hot
+    func isHot(unit: Double) -> Bool {
+        return temperature > unit
     }
     
-    func isLowCalore() -> Bool {
-        return calorie < 300
+    func isLowCalore(unit: Int) -> Bool {
+        return calorie < unit
     }
     
-    func validate(date: Date) -> Bool {
-        return expiration < date
+    func validateFromExpired(date: Date) -> Bool {
+        return expiration > date
     }
     
     static func == (lhs: Beverage, rhs: Beverage) -> Bool {
-        return lhs.name == rhs.name
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
 }

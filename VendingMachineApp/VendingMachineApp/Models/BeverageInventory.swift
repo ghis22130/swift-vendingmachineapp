@@ -9,22 +9,19 @@ import Foundation
 
 class BeverageInventory: NSObject, NSCoding {
      
-     private var allTypes: [Beverage.Type]
+     private var allTypes: [Beverage.Type] = [StrawberryMilk.self, ChocoMilk.self, Sprite.self, CocaCola.self, Top.self, Cantata.self]
      private (set) var beverages: [Beverage]
      
      override init(){
-          self.allTypes = [StrawberryMilk.self, ChocoMilk.self, Sprite.self, CocaCola.self, Top.self, Cantata.self]
           self.beverages = []
           super.init()
      }
      
      func encode(with coder: NSCoder) {
-          coder.encode(allTypes, forKey: "allTypes")
           coder.encode(beverages, forKey: "beverages")
      }
      
      required init?(coder: NSCoder) {
-          self.allTypes = coder.decodeObject(forKey: "allTypes") as! [Beverage.Type]
           self.beverages = coder.decodeObject(forKey: "beverages") as! [Beverage]
      }
      
@@ -40,16 +37,16 @@ class BeverageInventory: NSObject, NSCoding {
      
      func show(handler: (Beverage) -> Void) {
           beverages.forEach {
-               $0.forEach {
-                    handler($0)
-               }
+               handler($0)
           }
      }
      
-     func pop(_ beverage: Beverage) {
+     func canPop(_ beverage: Beverage) -> Bool {
           if let index = beverages.firstIndex(where: {ObjectIdentifier(type(of: $0)) == ObjectIdentifier(beverage)}) {
                beverages.remove(at: index)
+               return true
           }
+          return false
      }
      
      func count() -> Int {
@@ -84,15 +81,11 @@ class BeverageInventory: NSObject, NSCoding {
      }
      
      func possibleBeverages(with credit: Money) -> [Beverage]{
-          var beverages:[Beverage] = []
-          beverageInventory.values.forEach {
-               $0.forEach {
-                    if $0.canBuy(with: credit) {
-                         beverages.append($0)
-                    }
-               }
+          var possibleBeverages:[Beverage] = []
+          possibleBeverages = beverages.filter {
+               $0.canBuy(with: credit)
           }
-          return beverages
+          return possibleBeverages
      }
      
      func hotBeverages(unit: Double) -> [Beverage] {

@@ -11,9 +11,9 @@ class Milk: Beverage {
     
     private var fat: Int
     
-    init(brand: String, capacity: Int, price: Money, name: String, manufacturedDate: Date, fat: Int, expiration: Date, hot: Bool, calorie: Int) {
+    init(brand: String, capacity: Int, price: Money, name: String, manufacturedDate: Date, fat: Int, expiration: Date, temperature: Double, calorie: Int) {
         self.fat = fat
-        super.init(brand: brand, capacity: capacity, price: price, name: name, manufacturedDate: manufacturedDate, expiration: expiration, hot: hot, calorie: calorie )
+        super.init(brand: brand, capacity: capacity, price: price, name: name, manufacturedDate: manufacturedDate, expiration: expiration, temperature: temperature, calorie: calorie )
     }
     
     required init() {

@@ -41,13 +41,13 @@ class VendingMachineAppTests: XCTestCase {
     }
     
     func testAnyClassArchived() throws {
-        let testClass = Beverage()
+        let testClass = BeverageInventory()
         
         guard let data = try? NSKeyedArchiver.archivedData(withRootObject: testClass, requiringSecureCoding: false) else {
             XCTAssert(false, "Archived 실패")
             return
         }
-        guard let testClass2 = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? Beverage else {
+        guard let testClass2 = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? BeverageInventory else {
             XCTAssert(false, "UnArchived 실패")
             return
         }

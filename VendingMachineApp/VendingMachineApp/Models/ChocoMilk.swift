@@ -17,15 +17,15 @@ class ChocoMilk: Milk {
     
     private var cacao: Cacao
     
-    init(manufacturedDate: Date, fat: Int, cacao: Cacao, hot: Bool, calorie: Int) {
+    init(manufacturedDate: Date, fat: Int, cacao: Cacao, temperature: Double, calorie: Int) {
         self.cacao = cacao
-        super.init(brand: "매일우유", capacity: 550, price: Money(how: 2000), name: cacao.rawValue, manufacturedDate: manufacturedDate, fat: fat, expiration: Calendar.current.date(byAdding: .day, value: 14, to: manufacturedDate)!, hot: hot, calorie: calorie)
+        super.init(brand: "매일우유", capacity: 550, price: Money(how: 2000), name: cacao.rawValue, manufacturedDate: manufacturedDate, fat: fat, expiration: Calendar.current.date(byAdding: .day, value: 14, to: manufacturedDate)!, temperature: temperature, calorie: calorie)
     }
     
     required init() {
         self.cacao = .Original
         let manufacturedDate = Date()
-        super.init(brand: "매일우유", capacity: 550, price: Money(how: 2000), name: cacao.rawValue, manufacturedDate: manufacturedDate, fat: 20, expiration: Calendar.current.date(byAdding: .day, value: 14, to: manufacturedDate)!, hot: false, calorie: 550)
+        super.init(brand: "매일우유", capacity: 550, price: Money(how: 2000), name: cacao.rawValue, manufacturedDate: manufacturedDate, fat: 20, expiration: Calendar.current.date(byAdding: .day, value: 14, to: manufacturedDate)!, temperature: 0, calorie: 550)
     }
     
     required init?(coder: NSCoder) {
