@@ -12,11 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var vendingMachine: VendingMachine!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        if let vendingMachine = VendingMachineDataManager.load() {
-            self.vendingMachine = vendingMachine
-        } else {
-            self.vendingMachine = VendingMachine()
-        }
+        self.vendingMachine = VendingMachineDataManager.load()
         return true
     }
 }

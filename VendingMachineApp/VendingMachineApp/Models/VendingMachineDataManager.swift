@@ -8,10 +8,10 @@
 import Foundation
 
 struct VendingMachineDataManager {
-    static func load() -> VendingMachine? {
-        guard let data = UserDefaults.standard.data(forKey: "vendingMachine") else { return nil }
+    static func load() -> VendingMachine {
+        guard let data = UserDefaults.standard.data(forKey: "vendingMachine") else { return VendingMachine() }
         let vendingMachineData = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
-        guard let vendingMachine = vendingMachineData as? VendingMachine else { return nil }
+        guard let vendingMachine = vendingMachineData as? VendingMachine else { return VendingMachine() }
         return vendingMachine
     }
     
