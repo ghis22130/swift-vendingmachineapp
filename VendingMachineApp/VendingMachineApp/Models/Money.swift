@@ -8,7 +8,11 @@
 import Foundation
 
 class Money: NSObject, NSCoding {
-    private var property: Int
+    private var property: Int {
+        didSet {
+            NotificationCenter.default.post(name: VendingMachine.updateCredit, object: self)
+        }
+    }
     
     init(how property: Int) {
         self.property = property

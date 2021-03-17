@@ -10,20 +10,18 @@ import UIKit
 class CoinCollectionCell: UICollectionViewCell {
     @IBOutlet var coinButton: UIButton!
     var coin: Money?
+    var coinDelegate: InsertCoinable?
     
-    func updateUI(at coin: Int) {
+    func updateUI(at coin: Int, at delegate: InsertCoinable) {
         let title = String(coin) + "원"
         self.coin = Money(how: coin)
         coinButton.setTitle(title, for: .normal)
         coinButton.addTarget(self, action: #selector(onTapButton), for: .touchUpInside)
+        self.coinDelegate = delegate
     }
     
     @objc
     func onTapButton() {
-        let userInfo: [AnyHashable:Any] = ["coin":coin?.count() ?? 0]
-        
-        NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: "CoinPostButton"),
-            object: nil, userInfo: userInfo)
+        coinDelegate?.insertCoin(coin: (coin?.count())!)
     }
 }

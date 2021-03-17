@@ -29,33 +29,22 @@ class ViewController: UIViewController {
     
     func configureNotification() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(addDrink(_:)),
-                                               name: NSNotification.Name(rawValue: "BeveragePostButton"),
+                                               selector: #selector(addBeverage(_:)),
+                                               name: VendingMachine.updateStock,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(addCredit(_:)),
-                                               name: NSNotification.Name(rawValue: "CoinPostButton"),
+                                               name: VendingMachine.updateCredit,
                                                object: nil)
     }
     
     @objc
-    func addDrink(_ notification: Notification) {
-        guard let beverageType = notification.userInfo?["type"] as? Beverage.Type else {
-            return
-        }
-        guard let newDrink = BeverageFactory.create(type: beverageType) else {
-            return
-        }
-        self.appDelegate.vendingMachine.append(newDrink)
+    func addBeverage(_ notification: Notification) {
         beverageCollectionView.reloadData()
     }
     
     @objc
     func addCredit(_ notification: Notification) {
-        guard let coin = notification.userInfo?["coin"] as? Int else {
-            return
-        }
-        self.appDelegate.vendingMachine.insertCoin(coin: coin)
         coinCollectionView.reloadData()
     }
 }
@@ -82,7 +71,7 @@ extension ViewController: UICollectionViewDataSource {
             let beverageType = self.appDelegate.vendingMachine.beverageType(at: indexPath.item)
             let beverageCount = self.appDelegate.vendingMachine.countBeverage(at: indexPath.item)
 
-            cell.updateUI(beverageType: String(describing: beverageType), count: beverageCount)
+            cell.updateUI(beverageType: String(describing: beverageType), count: beverageCount, at: self.appDelegate.vendingMachine)
             cell.beverageType = { () in
                 return beverageType
             }
@@ -93,7 +82,7 @@ extension ViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             self.appDelegate.vendingMachine.eachCoin(at: indexPath.item) {
-                cell.updateUI(at: $0)
+                cell.updateUI(at: $0, at: self.appDelegate.vendingMachine)
             }
             return cell
         }

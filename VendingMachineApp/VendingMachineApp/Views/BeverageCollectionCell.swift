@@ -15,22 +15,22 @@ class BeverageCollectionCell: UICollectionViewCell {
     
     var beverageType: (()->Beverage.Type)?
     var count: Int?
+    var stockDelegate: StockManageAble?
     
-    func updateUI(beverageType: String, count: Int) {
+    func updateUI(beverageType: String, count: Int, at delegate: StockManageAble) {
         self.count = count
         addButton.setTitle("추가", for: .normal)
         addButton.addTarget(self, action: #selector(onTapButton), for: .touchUpInside)
         stockNumber.text = String(count) + "개"
         beverageImage.image = UIImage(named: "\(beverageType).jepg") ?? UIImage()
+        self.stockDelegate = delegate
     }
     
     @objc
     func onTapButton() {
-        let type = beverageType?()
-        let userInfo: [AnyHashable:Any] = ["type": type ?? Beverage.Type.self]
-        
-        NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: "BeveragePostButton"),
-            object: nil, userInfo: userInfo)
+        guard let type = beverageType?() else {
+            return
+        }
+        stockDelegate?.append(BeverageFactory.create(type: type) ?? Beverage())
     }
 }

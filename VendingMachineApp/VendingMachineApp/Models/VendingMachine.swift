@@ -7,7 +7,7 @@
 
 import Foundation
 
-class VendingMachine: NSObject, NSCoding {
+class VendingMachine: NSObject, NSCoding{
     enum Coin: Int, CaseIterable {
         case fifty = 50
         case hundred = 100
@@ -17,8 +17,8 @@ class VendingMachine: NSObject, NSCoding {
     }
     
     private var stock: BeverageInventory
-    private var credit: Money
     private var log: SalesLog
+    private var credit: Money
     
     init(beverages: BeverageInventory) {
         self.stock = beverages
@@ -46,18 +46,6 @@ class VendingMachine: NSObject, NSCoding {
         stock.show(handler: handler)
     }
     
-    func insertCoin(coin: Int) {
-        credit.deposit(unit: coin)
-    }
-    
-    func append(_ beverage: Beverage) {
-        stock.append(beverage)
-    }
-    
-    func append(beverages: [Beverage]) {
-        stock.append(beverages)
-    }
-    
     func possibleBeverages() -> [Beverage] {
         return stock.possibleBeverages(with: credit)
     }
@@ -80,15 +68,6 @@ class VendingMachine: NSObject, NSCoding {
     
     private func canBuy(with beverage: Beverage) -> Bool {
         return credit > beverage.price
-    }
-    
-    func buy(with beverage: Beverage) -> Beverage? {
-        if stock.canPop(beverage){
-            credit -= beverage.price
-            update(with: beverage)
-            return beverage
-        }
-        return nil
     }
     
     private func update(with beverage: Beverage) {
@@ -118,4 +97,34 @@ class VendingMachine: NSObject, NSCoding {
     func eachCoin(at index: Int, handler:(Int)-> Void) {
         handler(Coin.allCases[index].rawValue)
     }
+}
+
+extension VendingMachine: InsertCoinable {
+    func insertCoin(coin: Int) {
+        credit.deposit(unit: coin)
+    }
+}
+
+extension VendingMachine: StockManageAble {
+    func append(_ beverage: Beverage) {
+        stock.append(beverage)
+    }
+    
+    func append(beverages: [Beverage]) {
+        stock.append(beverages)
+    }
+    
+    func buy(with beverage: Beverage) -> Beverage? {
+        if stock.canPop(beverage){
+            credit -= beverage.price
+            update(with: beverage)
+            return beverage
+        }
+        return nil
+    }
+}
+
+extension VendingMachine {
+    static let updateStock = Notification.Name("updateStock")
+    static let updateCredit = Notification.Name("updateCoin")
 }

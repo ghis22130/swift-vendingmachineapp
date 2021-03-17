@@ -10,7 +10,11 @@ import Foundation
 class BeverageInventory: NSObject, NSCoding {
      
      private var allTypes: [Beverage.Type] = [StrawberryMilk.self, ChocoMilk.self, Sprite.self, CocaCola.self, Top.self, Cantata.self]
-     private (set) var beverages: [Beverage]
+     private (set) var beverages: [Beverage] {
+          didSet {
+               NotificationCenter.default.post(name: VendingMachine.updateStock, object: self)
+          }
+     }
      
      override init(){
           self.beverages = []
