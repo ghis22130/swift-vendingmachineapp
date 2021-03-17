@@ -28,12 +28,12 @@ class StrawberryMilk: Milk {
         super.init(brand: "서울우유", capacity: 480, price: Money(how: 1500), name: container.rawValue, manufacturedDate: manufacturedDate, fat: 20, expiration: Calendar.current.date(byAdding: .day, value: 14, to: manufacturedDate)!, hot: false, calorie: 550)    }
     
     required init?(coder: NSCoder) {
-        self.container = coder.decodeObject(forKey: "strawberrayMilkContainer") as! Container
+        self.container = Container(rawValue: coder.decodeObject(forKey: "container") as! String)!
         super.init(coder: coder)
     }
     
     override func encode(with coder: NSCoder) {
-        coder.encode(container, forKey: "strawberrayMilkContainer")
+        coder.encode(container.rawValue, forKey: container.rawValue)
         super.encode(with: coder)
     }
 }

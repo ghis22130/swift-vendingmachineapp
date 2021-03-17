@@ -29,12 +29,12 @@ class ChocoMilk: Milk {
     }
     
     required init?(coder: NSCoder) {
-        self.cacao = coder.decodeObject(forKey: "cacao") as! Cacao
+        self.cacao = Cacao(rawValue: coder.decodeObject(forKey: "cacao") as! String)!
         super.init(coder: coder)
     }
     
     override func encode(with coder: NSCoder) {
-        coder.encode(cacao, forKey: "cacao")
+        coder.encode(cacao.rawValue, forKey: "cacao")
         super.encode(with: coder)
     }
     

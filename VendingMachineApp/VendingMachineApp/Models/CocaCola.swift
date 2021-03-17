@@ -8,7 +8,7 @@
 import Foundation
 
 class CocaCola: Soda {
-    enum Flavor: String {
+    enum Flavor: String{
         case Original = "Original Cola"
         case Cherry = "Cherry Cola"
         case Vanilla = "Vanilla Cola"
@@ -28,12 +28,12 @@ class CocaCola: Soda {
     }
     
     required init?(coder: NSCoder) {
-        self.flavor = coder.decodeObject(forKey: "cocaColaFlavor") as! Flavor
+        self.flavor = Flavor(rawValue: coder.decodeObject(forKey: "colaFlavor") as! String)!
         super.init(coder: coder)
     }
     
     override func encode(with coder: NSCoder) {
-        coder.encode(flavor, forKey: "cocaColaFlavor")
+        coder.encode(flavor.rawValue, forKey: "colaFlavor")
         super.encode(with: coder)
     }
 }

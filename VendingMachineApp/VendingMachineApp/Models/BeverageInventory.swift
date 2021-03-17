@@ -11,10 +11,11 @@ typealias Inventory = Dictionary<ObjectIdentifier, [Beverage]>
 
 class BeverageInventory: NSObject, NSCoding {
     
-    private var allTypes:[Beverage.Type] = [StrawberryMilk.self, ChocoMilk.self, Sprite.self, CocaCola.self, Top.self, Cantata.self]
+    private var allTypes: [Beverage.Type]
     private (set) var beverageInventory: Inventory
     
     override init(){
+        self.allTypes = [StrawberryMilk.self, ChocoMilk.self, Sprite.self, CocaCola.self, Top.self, Cantata.self]
         self.beverageInventory = [:]
         super.init()
         setting()
@@ -35,7 +36,7 @@ class BeverageInventory: NSObject, NSCoding {
         }
         
         allBeverages.forEach {
-            beverageInventory[ObjectIdentifier(type(of: $0[0]))]? = $0
+            beverageInventory[ObjectIdentifier(type(of: $0[0]))]! = $0
         }
         self.beverageInventory = beverageInventory
         

@@ -28,12 +28,12 @@ class Top: Coffee {
     }
     
     required init?(coder: NSCoder) {
-        self.flavor = coder.decodeObject(forKey: "topFlavor") as! Flavor
+        self.flavor = Flavor(rawValue: coder.decodeObject(forKey: "topFlavor") as! String)!
         super.init(coder: coder)
     }
     
     override func encode(with coder: NSCoder) {
-        coder.encode(flavor, forKey: "topFlavor")
+        coder.encode(flavor.rawValue, forKey: "topFlavor")
         super.encode(with: coder)
     }
 }
