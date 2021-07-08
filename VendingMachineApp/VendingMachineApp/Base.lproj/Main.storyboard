@@ -69,6 +69,14 @@
                                             <constraint firstItem="vSf-Ro-sZc" firstAttribute="centerX" secondItem="mPz-YV-csn" secondAttribute="centerX" id="viq-Y2-JLZ"/>
                                         </constraints>
                                         <size key="customSize" width="262" height="260"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="addButton" destination="vsf-PK-ygx" id="fRb-RN-HRf"/>
                                             <outlet property="beverageImage" destination="nIN-Kj-h6W" id="LHH-9F-Pco"/>

@@ -15,5 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidEnterBackground(_ scene: UIScene) {
         VendingMachineDataManager.save(self.appDelegate.vendingMachine)
     }
+    
+    func sceneDidDisconnect(_ scene: UIScene) {
+        VendingMachineDataManager.save(self.appDelegate.vendingMachine)
+    }
 }
 

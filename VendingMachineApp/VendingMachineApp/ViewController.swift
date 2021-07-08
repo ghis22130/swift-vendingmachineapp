@@ -96,7 +96,3 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         return CGSize()
     }
 }
-//
-//
-//
-//
