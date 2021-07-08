@@ -18,21 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ByL-ja-pUw">
-                                <rect key="frame" x="20" y="98" width="899" height="638"/>
+                                <rect key="frame" x="20" y="98" width="899" height="462"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7mH-kV-LxE">
-                                    <size key="itemSize" width="262" height="219"/>
+                                    <size key="itemSize" width="262" height="260"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BeverageCollectionCell" id="mPz-YV-csn" customClass="BeverageCollectionCell" customModule="VendingMachineApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="262" height="219"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="262" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FBY-q2-spZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="262" height="219"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="262" height="260"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsf-PK-ygx">
@@ -51,12 +51,18 @@
                                                     <rect key="frame" x="41" y="43" width="175" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSf-Ro-sZc">
+                                                    <rect key="frame" x="108" y="208" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="262" height="219"/>
+                                        <size key="customSize" width="262" height="260"/>
                                         <connections>
                                             <outlet property="addButton" destination="vsf-PK-ygx" id="fRb-RN-HRf"/>
                                             <outlet property="beverageImage" destination="nIN-Kj-h6W" id="LHH-9F-Pco"/>
+                                            <outlet property="purchasedButton" destination="vSf-Ro-sZc" id="Wkw-70-hPO"/>
                                             <outlet property="stockNumber" destination="7Tv-YE-Vy5" id="X3U-lS-Wws"/>
                                         </connections>
                                     </collectionViewCell>

@@ -45,12 +45,11 @@ class BeverageInventory: NSObject, NSCoding {
           }
      }
      
-     func canPop(_ beverage: Beverage) -> Bool {
+     func canPop(_ beverage: Beverage.Type) -> Beverage? {
           if let index = beverages.firstIndex(where: {ObjectIdentifier(type(of: $0)) == ObjectIdentifier(beverage)}) {
-               beverages.remove(at: index)
-               return true
+               return beverages.remove(at: index)
           }
-          return false
+          return nil
      }
      
      func count() -> Int {

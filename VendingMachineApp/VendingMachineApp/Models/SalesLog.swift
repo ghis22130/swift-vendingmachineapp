@@ -9,7 +9,11 @@ import Foundation
 
 class SalesLog: NSObject, NSCoding {
     
-    private var log: BeverageInventory
+    private var log: BeverageInventory {
+        didSet {
+            NotificationCenter.default.post(name: VendingMachine.updateLog, object: self)
+        }
+    }
     
     override init() {
         log = BeverageInventory()
@@ -25,5 +29,9 @@ class SalesLog: NSObject, NSCoding {
     
     required init?(coder: NSCoder) {
         self.log = coder.decodeObject(forKey: "log") as! BeverageInventory
+    }
+    
+    func show(handler: (Beverage) -> Void) {
+        log.show(handler: handler)
     }
 }

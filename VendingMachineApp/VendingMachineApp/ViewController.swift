@@ -8,16 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBOutlet var beverageCollectionView: UICollectionView!
     @IBOutlet var coinCollectionView: UICollectionView!
+    var purchasedScrollView: PurChaseScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         configureNotification()
+//        configurePurchasedScrollView()
     }
     
     func configureCollectionView() {
@@ -25,6 +27,13 @@ class ViewController: UIViewController {
         beverageCollectionView.dataSource = self
         coinCollectionView.delegate = self
         coinCollectionView.dataSource = self
+    }
+    
+    func configurePurchasedScrollView() {
+        view.addSubview(purchasedScrollView)
+        purchasedScrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 600).isActive = true
+        purchasedScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        addScrollSubView()
     }
     
     func configureNotification() {
@@ -36,6 +45,7 @@ class ViewController: UIViewController {
                                                selector: #selector(addCredit(_:)),
                                                name: VendingMachine.updateCredit,
                                                object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePurchased(_:)), name: VendingMachine.updateLog, object: nil)
     }
     
     @objc
@@ -47,6 +57,14 @@ class ViewController: UIViewController {
     func addCredit(_ notification: Notification) {
         coinCollectionView.reloadData()
     }
+    
+    @objc
+    func updatePurchased(_ notification: Notification) {
+        
+    }
+    
+    func addScrollSubView(){
+    }
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -55,7 +73,7 @@ extension ViewController: UICollectionViewDataSource {
         if collectionView == self.beverageCollectionView {
             return self.appDelegate.vendingMachine.countType()
         }
-
+        
         else if collectionView == self.coinCollectionView {
             return self.appDelegate.vendingMachine.countKindOfCoin()
         }
@@ -67,10 +85,10 @@ extension ViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeverageCollectionCell", for: indexPath) as? BeverageCollectionCell else {
                 return UICollectionViewCell()
             }
- 
+            
             let beverageType = self.appDelegate.vendingMachine.beverageType(at: indexPath.item)
             let beverageCount = self.appDelegate.vendingMachine.countBeverage(at: indexPath.item)
-
+            
             cell.updateUI(beverageType: String(describing: beverageType), count: beverageCount, at: self.appDelegate.vendingMachine)
             cell.beverageType = { () in
                 return beverageType

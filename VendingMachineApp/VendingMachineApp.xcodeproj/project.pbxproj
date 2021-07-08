@@ -23,6 +23,7 @@
 		FF557E6B26019C5A0021B658 /* VendingMachineDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF557E612600910C0021B658 /* VendingMachineDataManager.swift */; };
 		FF557E752601F0620021B658 /* InsertCoinable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF557E742601F0620021B658 /* InsertCoinable.swift */; };
 		FF557E7F2601F26C0021B658 /* StockManageAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF557E7E2601F26C0021B658 /* StockManageAble.swift */; };
+		FF557E84260202420021B658 /* PurChaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF557E83260202420021B658 /* PurChaseScrollView.swift */; };
 		FF6F06DB25F708A600E2613A /* BeverageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6F06DA25F708A600E2613A /* BeverageCollectionCell.swift */; };
 		FF6F06EC25F8568E00E2613A /* BeverageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6F06EB25F8568E00E2613A /* BeverageFactory.swift */; };
 		FF6F06F225F8BEA400E2613A /* CoinCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6F06F125F8BEA400E2613A /* CoinCollectionCell.swift */; };
@@ -82,6 +83,7 @@
 		FF557E612600910C0021B658 /* VendingMachineDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendingMachineDataManager.swift; sourceTree = "<group>"; };
 		FF557E742601F0620021B658 /* InsertCoinable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertCoinable.swift; sourceTree = "<group>"; };
 		FF557E7E2601F26C0021B658 /* StockManageAble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockManageAble.swift; sourceTree = "<group>"; };
+		FF557E83260202420021B658 /* PurChaseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurChaseScrollView.swift; sourceTree = "<group>"; };
 		FF6F06DA25F708A600E2613A /* BeverageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeverageCollectionCell.swift; sourceTree = "<group>"; };
 		FF6F06EB25F8568E00E2613A /* BeverageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeverageFactory.swift; sourceTree = "<group>"; };
 		FF6F06F125F8BEA400E2613A /* CoinCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCollectionCell.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				FF6F06DA25F708A600E2613A /* BeverageCollectionCell.swift */,
 				FF6F06F125F8BEA400E2613A /* CoinCollectionCell.swift */,
 				FF6F06F725F9A9DE00E2613A /* CoinCollectionFooterView.swift */,
+				FF557E83260202420021B658 /* PurChaseScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				FF6F06EC25F8568E00E2613A /* BeverageFactory.swift in Sources */,
 				FF2DBFDB25E3780B00D2A215 /* Beverage.swift in Sources */,
 				FFCB24F725EE24330028AD95 /* Testable.swift in Sources */,
+				FF557E84260202420021B658 /* PurChaseScrollView.swift in Sources */,
 				FF6F06F825F9A9DE00E2613A /* CoinCollectionFooterView.swift in Sources */,
 				FFCB24A625E643900028AD95 /* Sprite.swift in Sources */,
 				FF6F06DB25F708A600E2613A /* BeverageCollectionCell.swift in Sources */,

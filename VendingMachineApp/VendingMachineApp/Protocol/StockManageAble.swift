@@ -8,7 +8,7 @@
 import Foundation
 
 protocol StockManageAble {
-    func buy(with beverage: Beverage) -> Beverage?
+    func purchase(with beverage: Beverage.Type) -> Beverage?
     
     func append(_ beverage: Beverage)
     

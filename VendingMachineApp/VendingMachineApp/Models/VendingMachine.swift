@@ -70,10 +70,6 @@ class VendingMachine: NSObject, NSCoding{
         return credit > beverage.price
     }
     
-    private func update(with beverage: Beverage) {
-        logUpdate(beverage)
-    }
-    
     private func logUpdate(_ beverage: Beverage) {
         log.update(beverage)
     }
@@ -114,11 +110,11 @@ extension VendingMachine: StockManageAble {
         stock.append(beverages)
     }
     
-    func buy(with beverage: Beverage) -> Beverage? {
-        if stock.canPop(beverage){
-            credit -= beverage.price
-            update(with: beverage)
-            return beverage
+    func purchase(with beverage: Beverage.Type) -> Beverage? {
+        if let purchasedBeverage = stock.canPop(beverage){
+            credit -= purchasedBeverage.price
+            logUpdate(purchasedBeverage)
+            return purchasedBeverage
         }
         return nil
     }
@@ -127,4 +123,5 @@ extension VendingMachine: StockManageAble {
 extension VendingMachine {
     static let updateStock = Notification.Name("updateStock")
     static let updateCredit = Notification.Name("updateCoin")
+    static let updateLog = Notification.Name("updateLog")
 }
