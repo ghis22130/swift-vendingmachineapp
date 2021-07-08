@@ -8,25 +8,36 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+        
     @IBOutlet var beverageCollectionView: UICollectionView!
     @IBOutlet var coinCollectionView: UICollectionView!
+  
     var purchasedScrollView: PurChaseScrollView!
+    private var vendingMachine: VendingMachine!
+    private var beverageCollectionViewDataSource: BeverageCollectionViewDataSource!
+    private var coinCollectionViewDataSource: CoinCollectionViewDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureVendingMachine()
         configureCollectionView()
         configureNotification()
 //        configurePurchasedScrollView()
     }
     
+    private func configureVendingMachine() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        vendingMachine = appDelegate.vendingMachine
+    }
+    
     func configureCollectionView() {
+        beverageCollectionViewDataSource = BeverageCollectionViewDataSource(vendingMachine)
+        coinCollectionViewDataSource = CoinCollectionViewDataSource(vendingMachine)
+        
         beverageCollectionView.delegate = self
-        beverageCollectionView.dataSource = self
+        beverageCollectionView.dataSource = beverageCollectionViewDataSource
         coinCollectionView.delegate = self
-        coinCollectionView.dataSource = self
+        coinCollectionView.dataSource = coinCollectionViewDataSource
     }
     
     func configurePurchasedScrollView() {
@@ -67,81 +78,25 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if collectionView == self.beverageCollectionView {
-            return self.appDelegate.vendingMachine.countType()
-        }
-        
-        else if collectionView == self.coinCollectionView {
-            return self.appDelegate.vendingMachine.countKindOfCoin()
-        }
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.beverageCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeverageCollectionCell", for: indexPath) as? BeverageCollectionCell else {
-                return UICollectionViewCell()
-            }
-            
-            let beverageType = self.appDelegate.vendingMachine.beverageType(at: indexPath.item)
-            let beverageCount = self.appDelegate.vendingMachine.countBeverage(at: indexPath.item)
-            
-            cell.updateUI(beverageType: String(describing: beverageType), count: beverageCount, at: self.appDelegate.vendingMachine)
-            cell.beverageType = { () in
-                return beverageType
-            }
-            return cell
-        }
-        else if collectionView == self.coinCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCollectionCell", for: indexPath) as? CoinCollectionCell else {
-                return UICollectionViewCell()
-            }
-            self.appDelegate.vendingMachine.eachCoin(at: indexPath.item) {
-                cell.updateUI(at: $0, at: self.appDelegate.vendingMachine)
-            }
-            return cell
-        }
-        return UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionFooter:
-            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CoinCollectionFooterView", for: indexPath) as? CoinCollectionFooterView else {
-                return UICollectionReusableView()
-            }
-            footer.configure(at: self.appDelegate.vendingMachine.nowCredit().count())
-            return footer
-        default:
-            return UICollectionReusableView()
-        }
-    }
-}
-
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         if collectionView == self.beverageCollectionView {
-            // 20 - beverage - 20 - beverage - 20 - beverage - 20
             let width:CGFloat = (collectionView.bounds.width - (20 * 4))/3
-            let height = width
-            
+            let height = collectionView.bounds.height / 2
+
             return CGSize(width: width, height: height)
         }
         else if collectionView == self.coinCollectionView {
-            // 20 - coin - 20 - coin - 20
             let width:CGFloat = (collectionView.bounds.width - (20 * 3))/2
             let height = width
-            
+
             return CGSize(width: width, height: height)
         }
         return CGSize()
     }
 }
-
-
-
-
+//
+//
+//
+//

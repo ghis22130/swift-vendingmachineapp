@@ -28,6 +28,8 @@
 		FF6F06EC25F8568E00E2613A /* BeverageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6F06EB25F8568E00E2613A /* BeverageFactory.swift */; };
 		FF6F06F225F8BEA400E2613A /* CoinCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6F06F125F8BEA400E2613A /* CoinCollectionCell.swift */; };
 		FF6F06F825F9A9DE00E2613A /* CoinCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6F06F725F9A9DE00E2613A /* CoinCollectionFooterView.swift */; };
+		FF80DDB62696CB2A00FFC047 /* BeverageCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DDB52696CB2A00FFC047 /* BeverageCollectionViewDataSource.swift */; };
+		FF80DDB82696CB9E00FFC047 /* CoinCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80DDB72696CB9E00FFC047 /* CoinCollectionViewDataSource.swift */; };
 		FFCB249125E5E8410028AD95 /* VendingMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCB249025E5E8410028AD95 /* VendingMachine.swift */; };
 		FFCB249625E5E9D80028AD95 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCB249525E5E9D80028AD95 /* Date.swift */; };
 		FFCB249B25E643510028AD95 /* ChocoMilk.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCB249A25E643510028AD95 /* ChocoMilk.swift */; };
@@ -88,6 +90,8 @@
 		FF6F06EB25F8568E00E2613A /* BeverageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeverageFactory.swift; sourceTree = "<group>"; };
 		FF6F06F125F8BEA400E2613A /* CoinCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCollectionCell.swift; sourceTree = "<group>"; };
 		FF6F06F725F9A9DE00E2613A /* CoinCollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCollectionFooterView.swift; sourceTree = "<group>"; };
+		FF80DDB52696CB2A00FFC047 /* BeverageCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeverageCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		FF80DDB72696CB9E00FFC047 /* CoinCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		FFCB249025E5E8410028AD95 /* VendingMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendingMachine.swift; sourceTree = "<group>"; };
 		FFCB249525E5E9D80028AD95 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		FFCB249A25E643510028AD95 /* ChocoMilk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChocoMilk.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 				FF2DBFC225E3775F00D2A215 /* AppDelegate.swift */,
 				FF2DBFC425E3775F00D2A215 /* SceneDelegate.swift */,
 				FF2DBFC625E3775F00D2A215 /* ViewController.swift */,
+				FF80DDB42696CB0B00FFC047 /* DataSources */,
 				FFCB24F525EE24270028AD95 /* Protocol */,
 				FF2DBFDD25E5E21A00D2A215 /* Models */,
 				FF6F06CE25F700F400E2613A /* Views */,
@@ -191,6 +196,15 @@
 				FF557E83260202420021B658 /* PurChaseScrollView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FF80DDB42696CB0B00FFC047 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				FF80DDB52696CB2A00FFC047 /* BeverageCollectionViewDataSource.swift */,
+				FF80DDB72696CB9E00FFC047 /* CoinCollectionViewDataSource.swift */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		FFCB249425E5E9C60028AD95 /* Extension */ = {
@@ -328,7 +342,9 @@
 				FFCB24F725EE24330028AD95 /* Testable.swift in Sources */,
 				FF557E84260202420021B658 /* PurChaseScrollView.swift in Sources */,
 				FF6F06F825F9A9DE00E2613A /* CoinCollectionFooterView.swift in Sources */,
+				FF80DDB62696CB2A00FFC047 /* BeverageCollectionViewDataSource.swift in Sources */,
 				FFCB24A625E643900028AD95 /* Sprite.swift in Sources */,
+				FF80DDB82696CB9E00FFC047 /* CoinCollectionViewDataSource.swift in Sources */,
 				FF6F06DB25F708A600E2613A /* BeverageCollectionCell.swift in Sources */,
 				FFCB24AE25E643AE0028AD95 /* Cantata.swift in Sources */,
 				FFCB24C525E8AC870028AD95 /* SalesLog.swift in Sources */,
